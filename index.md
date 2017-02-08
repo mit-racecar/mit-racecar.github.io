@@ -1,7 +1,6 @@
 ---
 title: MIT-Racecar
 layout: default
-permalink: /index/
 ---
 
 <h1> Welcome to MIT RACECAR Site </h1>
