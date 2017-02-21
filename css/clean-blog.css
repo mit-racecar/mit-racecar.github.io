@@ -144,7 +144,7 @@ hr.small {
   margin-bottom: 50px;
 
 }
-	.site-heading:before
+	/*.site-heading:before
 		{
 			content: '';
 			position: absolute;
@@ -155,7 +155,7 @@ hr.small {
 			background: rgba(84,84,84,0.525);
             color: #ffffff;
 		}
-
+*/
 
 
 
