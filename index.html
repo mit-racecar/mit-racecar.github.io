@@ -1,0 +1,48 @@
+---
+layout: page
+description: "A Powerful Platform for Robotics Research and Teaching"
+---
+
+<h1> Welcome to MIT RACECAR Site </h1>
+
+The RACECAR is an open-source powerful platform for robotics research and education.
+
+The platform houses state-of-the-art sensors and computing hardware, placed on top of a powerful 1/10-scale mini race car. 
+
+The design and development of the RACECAR a joint effort between the BeaverWorks Initiative of the Lincoln Laboratory, the Department of Aeronautics & Astronautics, and the Laboratory for Information and Decision Systems at the Massachusetts Institute of Technology.
+
+All material is open source and readily available at <a href="https://github.com/mit-racecar">github</a>.
+
+
+<!--
+{% for post in paginator.posts %}
+<div class="post-preview">
+    <a href="{{ post.url | prepend: site.baseurl }}">
+        <h2 class="post-title">            {{ post.title }}
+        </h2>
+        {% if post.subtitle %}
+        <h3 class="post-subtitle">
+            {{ post.subtitle }}
+        </h3>
+        {% endif %}
+    </a>
+    <p class="post-meta">Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}</p>
+</div>
+<hr>
+{% endfor %}
+
+{% if paginator.total_pages > 1 %}
+<ul class="pager">
+    {% if paginator.previous_page %}
+    <li class="previous">
+        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
+    </li>
+    {% endif %}
+    {% if paginator.next_page %}
+    <li class="next">
+        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
+    </li>
+    {% endif %}
+</ul>
+{% endif %}
+-->
