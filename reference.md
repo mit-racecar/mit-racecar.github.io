@@ -1,6 +1,6 @@
 ---
 layout:     page
-title:      "RACECAR Reference Manual"
+title:      "Reference Manual"
 subtitle:   ""
 ---
 
