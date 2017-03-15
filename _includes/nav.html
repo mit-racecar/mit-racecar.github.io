@@ -18,9 +18,6 @@
                 <li>
                     <a href="{{ site.baseurl }}/">Home</a>
                 </li>
-                <!--<li>
-                    <a href="{{ site.baseurl }}/reference/">Reference Manual</a>
-                </li>-->
                 {% for page in site.pages %}{% if page.title %}
 				{% if page.url != '/404.html' %}
                 <li>
@@ -28,6 +25,9 @@
                 </li>
 				{% endif %}
                 {% endif %}{% endfor %}
+		<li>
+                    <a href="https://web.mit.edu/winterg/RSS_2017/">Staff Portal</a>
+                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
