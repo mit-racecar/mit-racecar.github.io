@@ -45,7 +45,7 @@ roslaunch racecar teleop.launch
 This flame graph was generated with the below steps (with filtering) for the staff solution of Lab 5. It's interactive, click on it! [Click here to open in a new tab.](/img/flame_filtered.svg)
 
 
-### Overview:
+### Overview
 
 1. Modify code to allow for direct invocation
 2. Run your code while collecting profiling information
@@ -53,7 +53,7 @@ This flame graph was generated with the below steps (with filtering) for the sta
 4. Generate flame graphs with flamegraph.pl
 5. View and interact with the results in a web browser
 
-### Specifics:
+### Specifics
 
 #### 1. Modify code to allow for direct invocation
 
