@@ -14,6 +14,10 @@ p {
   margin: 30px 0;
 }
 
+.smaller_h1 h1 {
+  font-size: 49px;
+}
+
 .no_ridiculous_spacing p {
   margin: 8px 0;
 }
@@ -82,6 +86,9 @@ hr.small {
   letter-spacing: 1px;
 }
 @media only screen and (min-width: 768px) {
+  .intro-header .post-heading.flame_graph h1 {
+      font-size: 45px;
+  }
   .navbar-custom {
     background: transparent;
     border-bottom: 1px solid transparent;
