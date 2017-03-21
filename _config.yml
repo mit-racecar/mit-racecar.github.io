@@ -20,6 +20,7 @@ markdown: kramdown
 highlighter: rouge
 permalink: pretty
 paginate: 5
+paginate_path: "/reference_code/page:num"
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md", "contact.html"]
 
 gems: [jekyll-paginate, jekyll-feed]
