@@ -2,6 +2,7 @@
 layout:     page
 title:      "Reference Manual"
 subtitle:   ""
+class: "no_ridiculous_spacing"
 ---
 
 ## Table of Contents
@@ -19,7 +20,9 @@ subtitle:   ""
 ## Launching the racecar
 All racecar software can be launched from a single launch file.  This file will launch the laser scanner, telop, and wheel controls.  You can launch the file with the following:
 
-`roslaunch racecar teleop.launch`
+```
+roslaunch racecar teleop.launch
+```
 
 
 
@@ -35,4 +38,110 @@ All racecar software can be launched from a single launch file.  This file will 
 * Make sure that USB hub on bottom of robot has a blue (power) light lit.
 * Make sure that the USB cable from the VESC is plugged into the VESC and the USB hub.
 
+## Creating Flame Graphs in ROS
+
+<object style="margin-top: 20px;" data="/img/flame_filtered.svg" type="image/svg+xml" class="full_width"></object>
+
+This flame graph was generated with the below steps (with filtering) for the staff solution of Lab 5. It's interactive, click on it! [Click here to open in a new tab.](/img/flame_filtered.svg)
+
+
+### Overview:
+
+1. Modify code to allow for direct invocation
+2. Run your code while collecting profiling information
+3. (optional) Filter the profiling information to contain only the interesting bits
+4. Generate flame graphs with flamegraph.pl
+5. View and interact with the results in a web browser
+
+### Specifics:
+
+#### 1. Modify code to allow for direct invocation
+
+The primary consideration is how to load params which would be typically be provided natively in ROS when you use roslaunch. This is how we do it, you might be able to discover a better method. This should work both with direct invocation and with the standard roslaunch method.
+
+Modify your code to accept a "--config" argument which allows you to specify a yaml file.
+
+Python code: particle_filter.py
+
+```
+import argparse
+parser = argparse.ArgumentParser(description='Particle filter.')
+parser.add_argument('--config', help='Path to yaml file containing config parameters. \
+                    Helpful for calling node directly with Python for profiling.')
+
+def load_params_from_yaml(fp):
+    from yaml import load
+    with open(fp, 'r') as infile:
+        yaml_data = load(infile)
+        for param in yaml_data:
+            print "param:", param, ":", yaml_data[param]
+            rospy.set_param("~"+param, yaml_data[param])
+
+if __name__=="__main__":
+    rospy.init_node("particle_filter")
+
+    args,_ = parser.parse_known_args()
+    if args.config:
+        load_params_from_yaml(args.config)
+
+    pf = ParticleFiler()
+    rospy.spin()
+```
+
+YAML config parameters: params.yaml
+
+```
+scan_topic: "/scan"
+odometry_topic: "/vesc/odom"
+angle_step: 18
+max_particles: 5000
+range_method: "pcddt"
+theta_discretization: 108
+max_range: 10
+# etc...
+```
+
+#### 2. Run your code while collecting profiling information
+First install this: [https://github.com/evanhempel/python-flamegraph](https://github.com/evanhempel/python-flamegraph)
+
+```
+pip install git+https://github.com/evanhempel/python-flamegraph.git
+```
+
+Example command line invocation:
+```
+# 0.001 is the sampling rate (1000Hz here)
+# out.log is the output file
+python -m flamegraph -i 0.001 -o out.log ./src/particle_filter.py --config ./params.yaml
+```
+
+#### 3. (optional) Filter the profiling information to contain only the interesting bits
+If you do this with ROS, there will be a bunch of extra stack information in there which is not relevant to you. You can filter the log file to contain only the information you care about with grep. It might help to look at the unfiltered version to identify the functions you care about.
+
+Example command line invocation:
+```
+# filter only stack frames above function called "/scan`update"
+grep scan\`update out.log > out_filtered.log
+```
+
+#### 4. Generate flame graphs with flamegraph.pl
+First download the necessary Perl script from here: [https://github.com/brendangregg/FlameGraph/blob/master/flamegraph.pl](https://github.com/brendangregg/FlameGraph/blob/master/flamegraph.pl)
+
+Example command line invocation:
+```
+./flamegraph.pl --title "Your title here" out.log > flames.svg
+./flamegraph.pl --title "Your title here" out_filtered.log > flames_filtered.svg
+```
+
+#### 5. View and interact with the results in a web browser
+
+Open flames.svg in your web browser.
+
+<object style="margin-top: 20px;" data="/img/flame.svg" type="image/svg+xml" class="full_width"></object>
+
+Unfiltered flame graph for the staff solution of Lab 5. Clearly there's some extra information as compared to the filtered version. [Click here to open in a new tab.](/img/flame.svg)
+
+
+### Notes
+We recommend making a small set of bash scripts to implement the above steps, which should make it easier to remember the commands.
 
