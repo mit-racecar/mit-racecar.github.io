@@ -37,6 +37,7 @@ roslaunch racecar teleop.launch
 * Make sure Traxxas VESC battery is plugged in.
 * Make sure that USB hub on bottom of robot has a blue (power) light lit.
 * Make sure that the USB cable from the VESC is plugged into the VESC and the USB hub.
+* Try again, sometimes you retry a few times before it connects
 
 ## Creating Flame Graphs in ROS
 
