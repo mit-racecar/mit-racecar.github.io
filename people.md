@@ -98,7 +98,7 @@ Researchers and Designers
 
 
 <div class="col-sm-3 text-center">
-<img class="img-responsive img-centered center-block" src="../img/racecar.png" alt=""><h3> 
+<img class="img-responsive img-centered center-block" src="../img/winter.jpg" alt=""><h3> 
         Winter Guerra
 <br><small>
      Researcher and Student Instructor (MIT)
