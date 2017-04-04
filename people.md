@@ -62,11 +62,12 @@ Instructors
 
 
 <div class="col-sm-3 text-center">
+<a target="_blank" href="http://people.csail.mit.edu/aanders/">
 <img class="img-responsive img-centered center-block" src="../img/ari.jpg" alt=""><h3> 
         Ariel Anders
 <br><small>
         Graduate Student Instructor (MIT)
-</small></h3>
+</small></h3> </a>
 </div>
 
 <div class="clearfix"></div>
