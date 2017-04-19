@@ -4,6 +4,9 @@
  * Licensed under MIT (https://spdx.org/licenses/MIT)
  */
 
+/* this is for the responsive youtube embed iframe */
+.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
 body {
   font-family: 'Lora', 'Times New Roman', serif;
   font-size: 20px;
